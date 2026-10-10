@@ -1,0 +1,180 @@
+:root {
+  --fundo: #f4f5f7;
+  --superficie: #ffffff;
+  --texto: #1d2330;
+  --suave: #5d6577;
+  --borda: #d5d9e0;
+  --primaria: #1f5fbf;
+  --perigo: #c62828;
+  --ok: #2e7d32;
+  --pendente: #e07b00;
+  --nucleo: #595959;
+  --foco: #ff9800;
+  --celula: #ffffff;
+  /* cores da planilha */
+  --ferias: #ff0000;
+  --pre: #ffff00;
+  --lic-prog: #0070c0;
+  --lic-nao: #7030a0;
+  --fds: #ffc000;
+  --fer-nac: #92d050;
+  --fer-rec: #aeaaaa;
+  --remessa: #00b0f0;
+  --recesso: #f6c6ad;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --fundo: #14171d; --superficie: #1e232b; --texto: #e6e9ef; --suave: #9aa3b2; --borda: #343b47;
+    --primaria: #5b9bff; --celula: #262c36; color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --fundo: #14171d; --superficie: #1e232b; --texto: #e6e9ef; --suave: #9aa3b2; --borda: #343b47;
+  --primaria: #5b9bff; --celula: #262c36; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font: 14px/1.4 system-ui, 'Segoe UI', Calibri, sans-serif; background: var(--fundo); color: var(--texto); }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 1px; }
+button, .botao {
+  font: inherit; padding: 5px 11px; border: 1px solid var(--borda); border-radius: 6px; background: var(--superficie);
+  color: var(--texto); cursor: pointer; display: inline-block;
+}
+button:hover:not(:disabled), .botao:hover { border-color: var(--primaria); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.primario { background: var(--primaria); border-color: var(--primaria); color: #fff; }
+button.perigo { color: var(--perigo); border-color: var(--perigo); }
+.modal button.perigo:last-child { background: var(--perigo); color: #fff; }
+button.link { border: 0; padding: 0; background: none; color: var(--primaria); text-decoration: underline; text-align: left; }
+input, select, textarea { font: inherit; padding: 4px 7px; border: 1px solid var(--borda); border-radius: 5px; background: var(--superficie); color: var(--texto); }
+code { background: var(--fundo); padding: 0 4px; border-radius: 3px; }
+h2 { margin: 0 0 10px; font-size: 18px; }
+h3 { margin: 14px 0 6px; font-size: 15px; }
+
+.topo {
+  position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 8px 16px; background: var(--superficie); border-bottom: 1px solid var(--borda);
+}
+.topo h1 { font-size: 18px; margin: 0; white-space: nowrap; }
+.topo h1 small { color: var(--suave); font-weight: 400; }
+.topo nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.topo nav button { border-color: transparent; }
+.topo nav button.ativa { background: var(--primaria); color: #fff; }
+.acoes-topo { margin-left: auto; display: flex; gap: 6px; }
+.contador { font-weight: 600; color: var(--ok); border-color: var(--ok); }
+.contador.com-conflito { color: #fff; background: var(--perigo); border-color: var(--perigo); }
+main { padding: 12px 16px; }
+.pagina { display: grid; gap: 14px; max-width: 1200px; }
+.cartao { background: var(--superficie); border: 1px solid var(--borda); border-radius: 10px; padding: 14px 16px; }
+.cabecalho-secao { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dica { color: var(--suave); font-size: 13px; }
+.ok { color: var(--ok); }
+.erro-texto { color: var(--perigo); }
+.aviso-banner { background: #fff3cd; color: #5c4400; border: 1px solid #e0b100; padding: 8px 16px; margin: 8px 16px 0; border-radius: 8px; }
+.vazio { text-align: center; padding: 60px 20px; }
+.nowrap { white-space: nowrap; }
+.nowrap button + button { margin-left: 4px; }
+.selo { background: var(--perigo); color: #fff; border-radius: 10px; padding: 0 7px; font-size: 12px; }
+.zona-perigo { border-color: var(--perigo); }
+.acima-pct { color: var(--pendente); font-weight: 600; }
+
+/* formulários */
+.grade-form { display: grid; gap: 10px; }
+.campo { display: grid; gap: 3px; font-size: 13px; color: var(--suave); }
+.campo input, .campo select { color: var(--texto); }
+.linha-form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+.linha-form label { display: flex; gap: 6px; align-items: center; }
+
+/* tabelas */
+.tabela { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+.tabela th, .tabela td { border-bottom: 1px solid var(--borda); padding: 6px 8px; text-align: left; vertical-align: middle; }
+.tabela tr.grupo th { background: var(--nucleo); color: #fff; }
+.tabela tr.inativo td { opacity: .5; }
+.lista-nucleos { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 6px; }
+.lista-nucleos li { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.lista-nucleos li input { min-width: 200px; font-weight: 600; }
+
+/* saldo */
+.saldo { display: grid; gap: 4px; min-width: 220px; }
+.barra { display: grid; gap: 2px; font-size: 12px; }
+.barra-trilho { height: 6px; background: var(--fundo); border-radius: 3px; overflow: hidden; border: 1px solid var(--borda); }
+.barra-trilho span { display: block; height: 100%; background: var(--ok); }
+.barra.pendente .barra-trilho span { background: var(--pendente); }
+.barra.pendente small { color: var(--pendente); }
+.barra.excesso .barra-trilho span { background: var(--perigo); }
+.barra.excesso small { color: var(--perigo); font-weight: 700; }
+
+/* conflitos */
+ul.conflitos { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+ul.conflitos li { padding: 6px 10px; border-left: 4px solid var(--perigo); background: var(--fundo); border-radius: 4px; }
+ul.conflitos li.aviso { border-left-color: var(--pendente); }
+.log { max-height: 340px; overflow: auto; font-size: 13px; }
+.log time { color: var(--suave); margin-right: 6px; }
+.resumo li { margin: 2px 0; }
+
+/* modal */
+.modal-fundo { position: fixed; inset: 0; background: #0008; display: grid; place-items: center; z-index: 100; padding: 16px; }
+.modal { background: var(--superficie); border-radius: 12px; padding: 18px 20px; width: min(560px, 100%); max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 12px 40px #0006; }
+.modal.largo { width: min(900px, 100%); }
+.modal-corpo { overflow: auto; }
+.modal-rodape { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap; }
+.modal-rodape .esquerda { margin-right: auto; }
+
+/* legenda e amostras */
+.legenda { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 0; margin: 0; font-size: 12px; }
+.legenda li { display: flex; align-items: center; gap: 4px; }
+.amostra { display: inline-block; width: 14px; height: 14px; border: 1px solid #0003; vertical-align: middle; font-size: 10px; text-align: center; line-height: 12px; }
+.t-ferias { background: var(--ferias); }
+.t-preFerias { background: var(--pre); }
+.t-licencaProgramada { background: var(--lic-prog); }
+.t-licencaNaoProgramada { background: var(--lic-nao); }
+.d-fimDeSemana { background: var(--fds); }
+.d-feriadoNacional { background: var(--fer-nac); }
+.d-feriadoRecife { background: var(--fer-rec); }
+.d-remessa { background: var(--remessa); }
+.d-recesso { background: var(--recesso); }
+
+/* grade de planejamento */
+.planejamento { display: grid; gap: 8px; }
+.filtros { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.filtros label { display: flex; gap: 6px; align-items: center; }
+.grade-scroll { overflow: auto; max-height: calc(100vh - 150px); border: 1px solid var(--borda); background: var(--superficie); border-radius: 6px; }
+.grade { border-collapse: separate; border-spacing: 0; font-size: 11px; user-select: none; }
+.grade th, .grade td { border-right: 1px solid var(--borda); border-bottom: 1px solid var(--borda); padding: 0; }
+.grade td.dia, .grade th.num, .grade tr.ocupacao td { width: 18px; min-width: 18px; height: 20px; text-align: center; }
+.zoom-mes .grade td.dia, .zoom-mes .grade th.num, .zoom-mes .grade tr.ocupacao td { width: 34px; min-width: 34px; }
+.grade td.dia { background: var(--celula); cursor: cell; }
+.grade td.dia.t-ferias { background: var(--ferias); }
+.grade td.dia.t-preFerias { background: var(--pre); }
+.grade td.dia.t-licencaProgramada { background: var(--lic-prog); }
+.grade td.dia.t-licencaNaoProgramada { background: var(--lic-nao); }
+.grade td.dia.sel { box-shadow: inset 0 0 0 2px var(--primaria); background-image: linear-gradient(#1f5fbf44, #1f5fbf44); }
+.grade td.dia.conf, .amostra.conf { outline: 2px solid #000; outline-offset: -2px; color: #fff; font-weight: 900; text-shadow: 0 0 2px #000;
+  background-image: repeating-linear-gradient(45deg, transparent 0 3px, #0005 3px 5px); }
+.grade thead th { position: sticky; background: var(--superficie); z-index: 2; }
+.grade thead tr:first-child th { top: 0; height: 22px; }
+.grade thead tr:nth-child(2) th { top: 22px; color: #000; }
+.grade thead th.num:not([class*='d-']) { color: var(--texto); }
+.grade thead th.d-fimDeSemana { background: var(--fds); }
+.grade thead th.d-feriadoNacional { background: var(--fer-nac); }
+.grade thead th.d-feriadoRecife { background: var(--fer-rec); }
+.grade thead th.d-remessa { background: var(--remessa); }
+.grade thead th.d-recesso { background: var(--recesso); }
+.grade th.mes { font-size: 12px; font-weight: 600; border-left: 2px solid var(--suave); }
+.grade th.nome {
+  position: sticky; left: 0; z-index: 3; background: var(--superficie); min-width: 260px; max-width: 260px; text-align: left; padding: 0 6px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; font-size: 12px;
+}
+.grade thead th.nome.canto { z-index: 4; top: 0; }
+.grade tr.linha-nucleo th.nome, .grade tr.linha-nucleo td { background: var(--nucleo); color: #fff; height: 22px; }
+.grade tr.linha-nucleo th.nome small { font-weight: 400; color: #ddd; }
+.grade tr.linha-nucleo th.nome .acima-pct { color: #ffcc80; }
+.grade tr.ocupacao th.nome { font-weight: 400; color: var(--suave); font-style: italic; }
+.grade tr.ocupacao td { font-size: 10px; color: #000; }
+.grade tr.ocupacao td.abaixo { background: #c8e6c9; }
+.grade tr.ocupacao td.no-limite { background: #fff59d; }
+.grade tr.ocupacao td.acima { background: #ef5350; color: #fff; font-weight: 700; }
+.grade tr.focado th.nome { background: #ffe0b2; color: #000; }
+.icone-conflito { color: var(--perigo); margin-right: 4px; }
+.obs { color: var(--suave); }

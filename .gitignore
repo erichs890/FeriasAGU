@@ -1,0 +1,5 @@
+node_modules
+dist
+# Planilha real com nomes reais: nunca commitar
+modelo/
+*.tsbuildinfo
